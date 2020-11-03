@@ -1,0 +1,42 @@
+
+/*Income           Amount of tax     
+----------------------------------------------------------------
+Not over $750    1% of income      
+$  750-$2,250    $  7.50            plus 2% of amount over $750     
+$2,250-$3,750    $ 37.50            plus 3% of amount over $2,250   
+$3,750-$5,250    $ 82.50            plus 4% of amount over $3,750   
+$5,250-$7,000    $142.50            plus 5% of amount over $5,250   
+Over $7,000      $230.00            plus 6% of amount over $7,000
+
+750
+
+Tax due: $7.50*/
+#include <stdio.h>
+float main(){
+    float fincome = 0, ftexes = 0;
+    scanf("%f", &fincome);
+    if (fincome <= 750.0f)
+        ftexes = 0.01f*fincome;
+    else if(fincome <= 2250.0f){
+        fincome-=750.0f;
+        ftexes = 7.5f+0.02f*fincome;
+    }
+    else if(fincome <= 3750.0f){
+        fincome-=2250.0f;
+        ftexes = 37.5f+0.03f*fincome;
+    }
+    else if(fincome <= 5250.0f){
+        fincome-=3750.0f;
+        ftexes = 82.5f+0.04f*fincome;
+    }
+    else if(fincome <= 7000.0f){
+        fincome-=5250.0f;                    
+        ftexes = 142.5f+0.05f*fincome;  
+    }
+    else{
+        fincome-=7000.0f; 
+        ftexes = 230.0f+0.06f*fincome;        
+    }
+    printf("Tax due: $%.2f", ftexes);
+    return 0;
+}
